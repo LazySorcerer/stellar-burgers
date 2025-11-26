@@ -16,7 +16,7 @@ export const BurgerConstructor: FC = () => {
     constructorSelectors.constructorBurgerElement
   );
   // TODO: позже добавить orderRequest и orderModalData из стора
-  debugger;
+  // debugger;
 
   const orderRequest = false;
 

@@ -6,10 +6,29 @@ import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 
 import { useSelector } from '../../services/store';
 import { ingredientsSelectors } from '../../services/slices/ingredientsSlice';
+// import { constructorSelectors } from '../../services/slices/constructorSlice';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */
   const ingredients = useSelector(ingredientsSelectors.ingredientsSelect);
+  // const constructorItems = useSelector(constructorSelectors.constructorBurgerElement);
+
+  // Функция для подсчета количества каждого ингредиента
+  // const getIngredientCount = (ingredientId: string, ingredientType: string) => {
+  //   let count = 0;
+
+  //   // Для булок не показываем счетчик
+  //   if (ingredientType === 'bun') {
+  //     return constructorItems.bun && constructorItems.bun._id === ingredientId ? 0 : 0;
+  //   }
+
+  //   // Считаем начинки и соусы
+  //   count += constructorItems.ingredients.filter(
+  //     (item) => item._id === ingredientId
+  //   ).length;
+
+  //   return count;
+  // };
 
   // Фильтруем ингредиенты по типам
   const buns = ingredients.filter((item) => item.type === 'bun');
@@ -71,6 +90,7 @@ export const BurgerIngredients: FC = () => {
       mainsRef={mainsRef}
       saucesRef={saucesRef}
       onTabClick={onTabClick}
+      // ingredientsCounters={getIngredientCount}
     />
   );
 };

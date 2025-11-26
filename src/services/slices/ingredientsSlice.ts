@@ -31,7 +31,7 @@ const ingredientsSlice = createSlice({
         state.ingredients = action.payload;
       })
       .addCase(fetchIngredients.rejected, (state) => {
-        debugger;
+        //debugger;
         state.requestStatus = 'failed';
       });
   }
