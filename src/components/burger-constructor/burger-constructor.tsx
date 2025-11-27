@@ -12,19 +12,9 @@ import { constructorActions } from '../../services/slices/constructorSlice';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-  // const constructorItems = {
-  //   bun: {
-  //     price: 0
-  //   },
-  //   ingredients: []
-  // };
   const constructorItems = useSelector(
     constructorSelectors.constructorBurgerElement
   );
-  // TODO: позже добавить orderRequest и orderModalData из стора
-  // debugger;
-
   const orderRequest = useSelector(orderSelectors.newOrderRequestSelect);
   const orderModalData = useSelector(orderSelectors.newOrderSelect);
 
@@ -70,8 +60,6 @@ export const BurgerConstructor: FC = () => {
       ) || 0), // ← добавил проверку на существование ingredients
     [constructorItems]
   );
-
-  // return null;
 
   return (
     <BurgerConstructorUI

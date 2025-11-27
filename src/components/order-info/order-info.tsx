@@ -10,24 +10,11 @@ import { fetchOrderByNumber } from '../../services/thunks/orderThunk';
 import { useEffect } from 'react';
 
 export const OrderInfo: FC = () => {
-  /** TODO: взять переменные orderData и ingredients из стора */
-  // const orderData = {
-  //   createdAt: '',
-  //   ingredients: [],
-  //   _id: '',
-  //   status: '',
-  //   name: '',
-  //   updatedAt: 'string',
-  //   number: 0
-  // };
-
   const { number } = useParams();
   const dispatch = useDispatch();
 
   const orderData = useSelector(orderSelectors.currentOrderSelect);
   const ingredients = useSelector(ingredientsSelectors.ingredientsSelect);
-
-  // const ingredients: TIngredient[] = [];
 
   // Загружаем данные заказа по номеру
   useEffect(() => {

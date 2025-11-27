@@ -118,6 +118,14 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path='/profile/orders/:number'
+          element={
+            <ProtectedRoute>
+              <OrderInfo />
+            </ProtectedRoute>
+          }
+        />
 
         {/* 404 */}
         <Route path='*' element={<NotFound404 />} />

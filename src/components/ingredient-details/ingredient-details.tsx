@@ -6,8 +6,6 @@ import { useSelector } from '../../services/store';
 import { ingredientsSelectors } from '../../services/slices/ingredientsSlice';
 
 export const IngredientDetails: FC = () => {
-  /** TODO: взять переменную из стора */
-  // const ingredientData = null;
   const { id } = useParams();
   const ingredientData = useSelector((state) =>
     ingredientsSelectors.ingredientByIdSelect(state, id!)

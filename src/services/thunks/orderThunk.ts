@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { orderBurgerApi, getOrderByNumberApi } from '../../utils/burger-api';
-import { TOrder } from '../../utils/types';
 
 export const createOrder = createAsyncThunk(
   'order/create',

@@ -22,16 +22,13 @@ const ingredientsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchIngredients.pending, (state) => {
-        // debugger;
         state.requestStatus = 'loading';
       })
       .addCase(fetchIngredients.fulfilled, (state, action) => {
-        //debugger;
         state.requestStatus = 'succeeded';
         state.ingredients = action.payload;
       })
       .addCase(fetchIngredients.rejected, (state) => {
-        //debugger;
         state.requestStatus = 'failed';
       });
   }

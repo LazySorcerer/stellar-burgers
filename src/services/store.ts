@@ -10,7 +10,6 @@ import userSlice from './slices/userSlice';
 import orderSlice from './slices/orderSlice';
 import feedsSlice from './slices/feedsSlice';
 
-// const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 const rootReducer = combineReducers({
   ingredients: ingredientsSlice,
   burgerConstructor: constructorSlice,

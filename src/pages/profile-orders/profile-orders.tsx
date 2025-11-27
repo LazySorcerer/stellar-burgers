@@ -1,5 +1,4 @@
 import { ProfileOrdersUI } from '@ui-pages';
-import { TOrder } from '@utils-types';
 import { FC } from 'react';
 
 import { useEffect } from 'react';
@@ -10,8 +9,6 @@ import { userSelectors } from '../../services/slices/userSlice';
 import { Preloader } from '@ui';
 
 export const ProfileOrders: FC = () => {
-  /** TODO: взять переменную из стора */
-  // const orders: TOrder[] = [];
   const dispatch = useDispatch();
   const user = useSelector(userSelectors.userSelect);
   const userOrders = useSelector(feedsSelectors.feedOrdersSelect);

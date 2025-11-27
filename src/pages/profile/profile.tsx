@@ -2,19 +2,11 @@ import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useSelector } from '../../services/store';
 import { userSelectors } from '../../services/slices/userSlice';
-
-// interface FormValue {
-//   name: string;
-//   email: string;
-//   password: string;
-// }
+import { useDispatch } from '../../services/store';
+import { updateUser } from '../../services/thunks/userThunk';
 
 export const Profile: FC = () => {
-  /** TODO: взять переменную из стора */
-  // const user = {
-  //   name: '',
-  //   email: ''
-  // };
+  const dispatch = useDispatch();
   const user = useSelector(userSelectors.userSelect);
 
   const [formValue, setFormValue] = useState({
@@ -36,8 +28,20 @@ export const Profile: FC = () => {
     formValue.email !== user?.email ||
     !!formValue.password;
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    try {
+      await dispatch(
+        updateUser({
+          name: formValue.name,
+          email: formValue.email
+        })
+      ).unwrap();
+      // Очищаем пароль после успешного обновления
+      setFormValue((prev) => ({ ...prev, password: '' }));
+    } catch (err: any) {
+      console.log('Update error:', err);
+    }
   };
 
   const handleCancel = (e: SyntheticEvent) => {
@@ -65,6 +69,4 @@ export const Profile: FC = () => {
       handleInputChange={handleInputChange}
     />
   );
-
-  //return null;
 };

@@ -1,4 +1,3 @@
-// src/components/protected-route/protected-route.tsx
 import { FC, ReactElement } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '../../services/store';
@@ -20,7 +19,6 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
 
   // Пока проверяем авторизацию, не рендерим ничего
   if (!isAuthChecked) {
-    // return null;
     return <Preloader />;
   }
 

@@ -5,7 +5,8 @@ import {
   registerUserApi,
   updateUserApi,
   TRegisterData,
-  TLoginData
+  TLoginData,
+  logoutApi
 } from '../../utils/burger-api';
 import { TUser } from '../../utils/types';
 
@@ -29,4 +30,9 @@ export const registerUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'user/update',
   async (user: Partial<TRegisterData>) => await updateUserApi(user)
+);
+
+export const logoutUser = createAsyncThunk(
+  'user/logout',
+  async () => await logoutApi()
 );
