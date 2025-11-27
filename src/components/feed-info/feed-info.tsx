@@ -13,6 +13,11 @@ const getOrders = (orders: TOrder[], status: string): number[] =>
 
 export const FeedInfo: FC = () => {
   const feed = useSelector(feedsSelectors.feedSelect);
+
+  if (!feed) {
+    return <div>Данные не загружены</div>;
+  }
+
   const orders = feed?.orders || [];
 
   const readyOrders = getOrders(orders, 'done');
