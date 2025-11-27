@@ -7,7 +7,6 @@ import {
   registerUser,
   updateUser
 } from '../thunks/userThunk';
-import { setCookie } from '../../utils/cookie';
 
 type RequestStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 
@@ -53,14 +52,10 @@ const userSlice = createSlice({
       // loginUser
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        setCookie('accessToken', action.payload.accessToken);
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
       })
       // registerUser
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        setCookie('accessToken', action.payload.accessToken);
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
       })
       // updateUser
       .addCase(updateUser.fulfilled, (state, action) => {
@@ -68,9 +63,6 @@ const userSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
-        // Очищаем токены
-        setCookie('accessToken', '');
-        localStorage.removeItem('refreshToken');
       });
   }
 });

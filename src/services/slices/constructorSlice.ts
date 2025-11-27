@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TConstructorIngredient, TIngredient } from '../../utils/types';
+import {
+  TConstructorIngredient,
+  TIngredient,
+  TConstructorState
+} from '../../utils/types';
 import { RootState } from '../store';
-
-type TConstructorState = {
-  bun: TConstructorIngredient | null;
-  ingredients: TConstructorIngredient[];
-};
 
 const initialState: TConstructorState = {
   bun: null,

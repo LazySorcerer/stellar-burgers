@@ -28,8 +28,14 @@ export const Register: FC = () => {
       // После успешной регистрации редирект на предыдущую страницу или на главную
       const from = location.state?.from || '/';
       navigate(from, { replace: true });
-    } catch (err: any) {
-      setError(err.message || 'Ошибка регистрации');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else if (typeof err === 'string') {
+        setError(err);
+      } else {
+        setError('Ошибка регистрации');
+      }
     }
   };
 

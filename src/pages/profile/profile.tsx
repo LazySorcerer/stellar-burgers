@@ -39,8 +39,14 @@ export const Profile: FC = () => {
       ).unwrap();
       // Очищаем пароль после успешного обновления
       setFormValue((prev) => ({ ...prev, password: '' }));
-    } catch (err: any) {
-      console.log('Update error:', err);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.log('Update error:', err.message);
+      } else if (typeof err === 'string') {
+        console.log('Update error:', err);
+      } else {
+        console.log('Update error: Unknown error');
+      }
     }
   };
 
