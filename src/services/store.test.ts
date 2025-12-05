@@ -5,25 +5,33 @@ describe('rootReducer', () => {
     const action = { type: 'UNKNOWN_ACTION' };
     const result = rootReducer(undefined, action);
     
-    // Проверяем структуру начального состояния
-    expect(result).toEqual({
-      ingredients: expect.any(Object),
-      burgerConstructor: expect.any(Object),
-      user: expect.any(Object),
-      order: expect.any(Object),
-      feeds: expect.any(Object)
-    });
-
     // Проверяем конкретные начальные состояния
-    expect(result.burgerConstructor).toEqual({
-      bun: null,
-      ingredients: []
+    expect(result).toEqual({
+      ingredients: {
+        ingredients: [],
+        requestStatus: 'idle'
+      },
+      burgerConstructor: {
+        bun: null,
+        ingredients: []
+      },
+      user: {
+        user: null,
+        userCheck: false,
+        requestStatus: 'idle'
+      },
+      order: {
+        newOrder: null,
+        newOrderRequest: false,
+        currentOrder: null,
+        currentOrderLoading: false,
+        requestStatus: 'idle'
+      },
+      feeds: {
+        feed: null,
+        ordersAuth: [],
+        requestStatus: 'idle'
+      }
     });
-    
-    // Можно добавить проверки для других слайсов
-    expect(result.ingredients).toEqual(expect.objectContaining({
-      ingredients: [],
-      requestStatus: 'idle'
-    }));
   });
 });

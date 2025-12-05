@@ -1,7 +1,7 @@
 beforeEach(function() {
   cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json'});
   cy.viewport(1300, 800);
-  cy.visit('http://localhost:4000/');
+  cy.visit('/');
 });
 
 describe('Добавление ингридиентов в бургер', function() {
@@ -47,7 +47,7 @@ describe('Заказ', function() {
     );
     cy.setCookie('accessToken', 'test-accessToken');
     cy.viewport(1300, 800);
-    cy.visit('http://localhost:4000/');
+    cy.visit('/');
   });
 
   afterEach(function() {
