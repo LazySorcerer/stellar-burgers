@@ -70,9 +70,8 @@ describe('Заказ', function() {
     cy.get('[data-cy=order-number]').contains('95450').should('exist');
 
     cy.get('#modals button[type="button"]').click();
-    //cy.get('#modals').should('not.exist');
-    // cy.get('[data-cy=order-number]').contains('95450').should('not.exist');
 
+    cy.get('[data-cy=order-number]').should('not.exist');
     cy.get('[data-cy=constructor]').contains('Булка1').should('not.exist');
     cy.get('[data-cy=constructor]').contains('Основа1').should('not.exist');
     cy.get('[data-cy=constructor]').contains('Соус1').should('not.exist');
